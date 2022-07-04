@@ -30,6 +30,7 @@ body {
     height: 50px;
     line-height: 50px;
     background-color: #f1f1f1;
+    position: relative;
 }
 
 .shortcut ul li {
@@ -93,12 +94,6 @@ body {
     width: 800px;
     height: 568px;
     margin: 0 auto;
-}
-
-.count1 img {
-    position: absolute;
-    left: 50%;
-    translate: -50%;
 }
 
 .saleZoom {
