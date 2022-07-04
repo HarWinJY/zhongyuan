@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中源家具-综合家具首选-正品低价、品质保障、配送及时</title>
+    <!-- 网站说明 -->
+    <meta name="description" content="中源家具-专业的家具制造，沙发、电脑桌、办公桌、以及各种家具订做，为你提供优质、诚信的服务！">
+    <!-- 关键字说明 -->
+    <meta name="keywords" content="家具定做,家具,沙发,电脑桌,办公桌,桌子">
+    <!-- 引入favicon图标 -->
+    <link rel="shortcut icon" href=" favicon.ico" />
+    <!-- 引入重置样式 -->
+    <link rel="stylesheet" href="css/rset.css">
+    <!-- 引入公共样式 -->
+    <link rel="stylesheet" href="css/base.css">
+</head>
+<style>
+    #outer {
+        width: 1200px;
+        height: 500px;
+        padding: 10px 0;
+        /* 开启相对定位 */
+        position: relative;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+
+    #imgList {
+        /* width: 2601px; */
+        /* 开启绝对定位 */
+        position: absolute;
+        left: 0;
+    }
+
+    #imgList li {
+        float: left;
+        margin: 0 10px;
+    }
+
+    #imgNav {
+        /* 开启绝对定位 */
+        position: absolute;
+        bottom: 15px;
+    }
+
+    #imgNav a {
+        /*设置元素向左浮动*/
+        float: left;
+        width: 15px;
+        height: 15px;
+        margin: 0 5px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, .3);
+        /*将背景颜色值设置到内容区，边框和内边距不再由背景颜色*/
+        background-clip: content-box;
+        border: 2px solid transparent;
+    }
+
+    #imgNav a:hover {
+        background-color: #fff;
+        border: 2px solid rgba(255, 255, 255, .3);
+    }
+</style>
+<script type="text/javascript" src="js/tools.js"></script>
+<script>
+    window.onload = function () {
+        // 设置imgList的宽度
+        // 获取imgList
+        let imgList = document.getElementById("imgList")
+
+        // 获取页面中所有的img标签
+        let imgArr = document.getElementsByClassName("img")
+
+        // 设置imgList的宽度
+        imgList.style.width = 1220 * imgArr.length + "px"
+
+        // 设置导航按钮居中
+        // 获取imgNav
+        let imgNav = document.getElementById("imgNav")
+        // 获取outer
+        let outer = document.getElementById("outer")
+        // 设置imgNav的left值
+        imgNav.style.left = (outer.offsetWidth - imgNav.offsetWidth) / 2 + "px"
+
+        // 默认显示图片的索引
+        let index = 0;
+        // 获取所有的a
+        let allA = document.getElementsByClassName("navA")
+        // 设置默认选中的效果
+        allA[index].style.backgroundColor = "#fff"
+
+        //    为所有的超链接都绑定单机响应函数
+        for (var i = 0; i < allA.length; i++) {
+
+            allA[i].num = i;
+
+            //为每一个超链接都添加一个num属性
+            allA[i].onclick = function () {
+
+                //关闭自动切换的定时器
+                clearInterval(timer);
+
+                //获取超链接的索引，并将其设置为index
+                index = this.num;
+
+                //切换图片
+                //imgList.style.left = -520 * index + "px";
+                //设置选中的a
+                setA();
+
+                //使用move函数来切换图片
+                move(imgList, "left", -1220 * index, 20, function () {
+                    //动画执行完毕，开启自动切换
+                    autoChange();
+                });
+            };
+        }
+        //开始自动切换图片
+        autoChange();
+
+        //创建一个方法用来设置选中的a
+        function setA() {
+            for (var i = 0; i < allA.length; i++) {
+
+                //判断当前索引是否是最后一张图片
+                if (index >= imgArr.length - 1) {
+                    //将index设置为0
+                    index = 0;
+                    //此时显示的最后一张图片，而最后一张图片和第一张是一模一样的
+                    //通过CSS将最后一张切换成第一张
+                    imgList.style.left = 0;
+                }
+                //遍历所有a，并将他们的背景颜色设置为红色
+                allA[i].style.backgroundColor = "";
+            }
+
+            //将选中的a设置为黑色
+            allA[index].style.backgroundColor = "white";
+        };
+
+        //定时器标识
+        var timer
+        //创建一个函数，用来开启自动切换图片
+        function autoChange() {
+            //开启一个定时器，用来定时去切换图片
+            timer = setInterval(function () {
+
+                //使索引自增
+                index++;
+
+                //判断index的值
+                index %= imgArr.length;
+
+                //执行动画，切换图片
+                move(imgList, "left", -1220 * index, 20, function () {
+                    //修改导航按钮
+                    setA();
+                });
+            }, 3000);
+        }
+    }
+</script>
+
+<body>
+    <!-- 快捷导航模块 -->
+    <section class="shortcut">
+        <div class="w">
+            <div class="fl">
+                <ul>
+                    <li>中源家居欢迎您！</li>
+                </ul>
+            </div>
+            <div class="fr">
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li></li>
+                    <li><a href="#">桌子</a></li>
+                    <li></li>
+                    <li><a href="#">办公专区</a></li>
+                    <li></li>
+                    <li><a href="#">沙发</a></li>
+                    <li></li>
+                    <li><a href="#">架柜</a></li>
+                    <li></li>
+                    <li><a href="#">茶几</a></li>
+                    <li></li>
+                    <li><a href="#">关于我们</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- header头部模块制作 -->
+    <header class="header w">
+        <!-- logo模块 -->
+        <div class="logo">
+            <h1>
+                <a href="index.html" title="中源家具">中源家具</a>
+            </h1>
+        </div>
+        <div class="font-header">
+            <span>中源家具~专业定制，定制生活，给你舒适的体验</span>
+        </div>
+    </header>
+    <!-- 轮播图 -->
+    <div id="outer" class="w">
+        <ul id="imgList">
+            <li><img src="img/3.png" alt="" class="img"></li>
+            <li><img src="img/9.png" alt="" class="img"></li>
+            <li><img src="img/11.png" alt="" class="img"></li>
+            <li><img src="img/16.png" alt="" class="img"></li>
+            <li><img src="img/19.png" alt="" class="img"></li>
+            <li><img src="img/3.png" alt="" class="img"></li>
+        </ul>
+        <!-- 创建导航按钮 -->
+        <div id="imgNav">
+            <a href="javaScript:;" class="navA"></a>
+            <a href="javaScript:;" class="navA"></a>
+            <a href="javaScript:;" class="navA"></a>
+            <a href="javaScript:;" class="navA"></a>
+            <a href="javaScript:;" class="navA"></a>
+        </div>
+    </div>
+    <!-- main1 -->
+    <div class="count w center">
+        <div class="count1">
+            <img src="./img/tu1.png" alt="">
+        </div>
+    </div>
+
+    <div class="saleZoom w center clearfix">
+        <div class="saleHeader">
+            <div class="salelf">
+                <span>桌子专区 /</span> TABLE ZONE
+            </div>
+            <div class="imgContainer ">
+                <img src="./img/2.png" alt="" class="imgc1" width="450px">
+                <img src="./img/7.png" alt="" class="imgc2">
+                <img src="./img/17.png" alt="" class="imgc3">
+                <img src="./img/91.png" alt="" class="imgc4" width="550px">
+            </div>
+        </div>
+        <div class="officeTab center">
+            <div class="offspan">
+                <span>办公专区 /</span> OFFICE ZONE
+            </div>
+            <div class="imgContainer ">
+                <img src="./img/15.png" alt="" class="imgt1">
+                <img src="./img/18.png" alt="" class="imgt2">
+                <img src="./img/6.png" alt="" class="imgt3" width="400px">
+                <img src="./img/191.png" alt="" class="imgt4">
+                <img src="./img/10.png" alt="" class="imgt5" width="400px">
+            </div>
+        </div>
+        <div class="sofacontainer center w">
+            <div class="sofaspan">
+                <span>沙发专区 /</span> SOFAT ZONE
+            </div>
+            <div class="imgContainer ">
+                <img src="./img/sofa1.png" alt="" >
+                <img src="./img/sofa 2.png" alt="" >
+                <img src="./img/sofa3.png" alt="" class="sofa3">
+                <img src="./img/sofa4.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部模块 -->
+     <!-- 底部模块的制作 -->
+     <footer class="footer">
+        <div class="w">
+            <div class="mod_copyright">
+                <div class="links">
+                    <a href="js:;">关于我们</a> | <a href="js:;">联系我们</a> | <a href="js:;">家具定做</a> |
+                    <a href="js:;">English Site</a> | <a href="js:;">Contact U</a>
+                </div>
+                <div class="copyright">
+                    地址：广州市黄埔区鱼珠街道蟹山西路67号中源家具 邮编：510700 电话：13668977387 传真：020-82000161 邮箱: 120776852@qq.com <br>
+                    公司固话：82000361
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
